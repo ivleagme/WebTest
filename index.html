@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrandName - Professional Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --text-color: #343a40;
+            --light-bg-color: #ffffff;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* --- Navigation --- */
+        .navbar {
+            background-color: var(--light-bg-color);
+            padding: 1rem 0;
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .navbar-links a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+        .navbar-links a:hover {
+            color: var(--primary-color);
+        }
+        .login-btn {
+            padding: 0.5rem 1rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .login-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 5rem 0;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        .hero-btn {
+            padding: 0.75rem 2rem;
+            background-color: white;
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: background-color 0.3s ease;
+        }
+        .hero-btn:hover {
+            background-color: #e2e6ea;
+        }
+
+        /* --- Sections --- */
+        .section {
+            padding: 4rem 0;
+            text-align: center;
+        }
+        .section-header {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            text-transform: uppercase;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .service-card {
+            background-color: var(--light-bg-color);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            text-align: left;
+        }
+        .service-card h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+        .service-card p {
+            color: var(--secondary-color);
+        }
+
+        /* --- Diagnostic Section (React) --- */
+        #react-diagnostic-root {
+            min-height: 400px;
+            background-color: var(--light-bg-color);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-top: 2rem;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: var(--text-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Modal (Login) --- */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: var(--light-bg-color);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            width: 90%;
+            max-width: 400px;
+            position: relative;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            cursor: pointer;
+        }
+        .login-form input {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: var(--border-radius);
+        }
+        .login-form button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+        }
+        .login-form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">BrandName</a>
+            <div class="navbar-links">
+                <a href="#services">Services</a>
+                <a href="#diagnostic">Diagnostic</a>
+                <a href="#contact">Contact</a>
+                <button class="login-btn" id="open-login">Log In</button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1>Your Partner in Business Growth</h1>
+            <p>Empowering companies with cutting-edge solutions and strategic insights to thrive in a competitive market.</p>
+            <a href="#diagnostic" class="hero-btn">Start Your Diagnostic</a>
+        </div>
+    </header>
+
+    <section id="services" class="section">
+        <div class="container">
+            <h2 class="section-header">Our Core Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Strategic Consulting</h3>
+                    <p>Expert guidance to define your business strategy, optimize operations, and achieve long-term success.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Data Analytics</h3>
+                    <p>Unlock the power of your data with our advanced analytics services to make informed decisions.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Digital Transformation</h3>
+                    <p>Seamlessly integrate new technologies into your business to enhance efficiency and customer experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="diagnostic" class="section">
+        <div class="container">
+            <h2 class="section-header">Company Diagnostic</h2>
+            <p>Answer a few questions to get a high-level assessment of your company's health and identify key areas for improvement.</p>
+            <div id="react-diagnostic-root">
+                <p style="text-align: center; color: #6c757d;">Loading diagnostic tool...</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 BrandName. All Rights Reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3 style="text-align: center;">Log In to Your Account</h3>
+            <form class="login-form">
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit">Log In</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        const loginModal = document.getElementById('login-modal');
+        const openLoginBtn = document.getElementById('open-login');
+        const closeBtn = document.querySelector('.close-btn');
+
+        openLoginBtn.onclick = function() {
+            loginModal.style.display = 'flex';
+        }
+
+        closeBtn.onclick = function() {
+            loginModal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == loginModal) {
+                loginModal.style.display = 'none';
+            }
+        }
+
+        // Dummy function for React section (replace with actual React code)
+        function renderReactDiagnostic() {
+            const root = document.getElementById('react-diagnostic-root');
+            root.innerHTML = `
+                <div style="padding: 2rem;">
+                    <h4 style="color: #007bff; text-align: center;">Diagnostic Tool</h4>
+                    <form>
+                        <div style="margin-bottom: 1rem;">
+                            <label for="employees">Number of Employees:</label>
+                            <input type="number" id="employees" style="width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;">
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <label for="revenue">Annual Revenue (in USD):</label>
+                            <input type="number" id="revenue" style="width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;">
+                        </div>
+                        <button type="submit" style="width: 100%; padding: 0.75rem; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">Get Diagnostic</button>
+                    </form>
+                    <div id="diagnostic-results" style="margin-top: 1.5rem; text-align: center; border-top: 1px solid #eee; padding-top: 1rem;">
+                        <p style="color: #6c757d;">Results will appear here...</p>
+                    </div>
+                </div>
+            `;
+
+            // Add basic form submission logic
+            const form = root.querySelector('form');
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const employees = document.getElementById('employees').value;
+                const revenue = document.getElementById('revenue').value;
+                const resultsDiv = document.getElementById('diagnostic-results');
+
+                let message = "Based on your inputs, your company shows a strong foundation.";
+                if (employees < 50 && revenue < 1000000) {
+                    message = "Your company is in an early growth stage. Focus on market expansion and process optimization.";
+                } else if (employees > 500 && revenue > 50000000) {
+                    message = "Your company is well-established. Consider diversifying services and investing in R&D.";
+                }
+
+                resultsDiv.innerHTML = `<h5 style="color: #28a745;">Diagnostic Complete!</h5><p>${message}</p>`;
+            });
+        }
+
+        // Call the function to render the placeholder
+        document.addEventListener('DOMContentLoaded', renderReactDiagnostic);
+    </script>
+</body>
+</html>
